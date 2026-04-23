@@ -76,11 +76,10 @@ resource "aws_security_group" "test-terraform-sg" {
 
 # 7. Actualizar la EC2 (ahora vive dentro de la nueva Subnet)
 resource "aws_instance" "test-terraform-ec2" {
-  ami                    = "ami-0ea87431_pon_tu_ami_aqui" # Asegúrate de usar la AMI de North Virginia
+  ami                    = "ami-0ea87431b78a82070" # ID real de Amazon Linux 2023
   instance_type          = "t2.micro"
   key_name               = "vockey"
-  
-  subnet_id              = aws_subnet.test-terraform-subnet.id # ¡REFERENCIA CLAVE!
+  subnet_id              = aws_subnet.test-terraform-subnet.id
   vpc_security_group_ids = [aws_security_group.test-terraform-sg.id]
 
   tags = {
